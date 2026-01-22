@@ -1,0 +1,85 @@
+﻿@page "/"
+@using SnakeGame.GameEngine
+@inject IJSRuntime JS
+
+<h1>Snake 🐍</h1>
+
+<p style="text-align:center; font-weight:bold; font-size:18px;">
+    Score: @(_game.Snake.Count - 1)
+</p>
+
+@if (_game.IsGameOver)
+{
+    <p style="color:red; font-weight:bold;">Game over! Your score: @(_game.Snake.Count - 1)</p>
+    <button @onclick="ReStartGame" style="
+        position:absolute;
+        left:50%; top:60%;
+        transform:translate(-50%,0);
+        padding:10px 20px;
+        font-size:16px;">
+        Restart
+    </button>
+}
+
+<canvas 
+        @ref="_canvas"
+        width="400"
+        height="400"
+        tabindex="0"
+        @onkeydown="HandleKey"
+        style="border:3px solid #333; background-color:#f0f0f0; display:block; margin:auto;">
+</canvas>
+
+@code {
+    private SnakeGame _game = new SnakeGame(20, 20);
+    private ElementReference _canvas;
+    private PeriodicTimer _timer = new(TimeSpan.FromMilliseconds(200));
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var module = await JS.InvokeAsync<IJSObjectReference>(
+                "import", "./snakeCanvas.js");
+
+            await module.InvokeVoidAsync("focusCanvas", _canvas);
+            _ = RunGameLoop(module);
+        }
+    }
+
+    private async Task RunGameLoop(IJSObjectReference module)
+    {
+        while (await _timer.WaitForNextTickAsync())
+        {
+            if (!_game.IsGameOver)
+
+            {    //Piirtää canvasin aina, GameOver tilassa myös
+                _game.Update();
+                await module.InvokeVoidAsync("drawGame", _canvas, _game.Snake, _game.Food, _game.Width, _game.Height, _game.IsGameOver);
+                StateHasChanged();
+            } 
+        }
+    }
+
+    private void HandleKey(KeyboardEventArgs e)
+    {
+        if (e.Key == "ArrowUp") _game.ChangeDirection(Direction.Up);
+        if (e.Key == "ArrowDown") _game.ChangeDirection(Direction.Down);
+        if (e.Key == "ArrowLeft") _game.ChangeDirection(Direction.Left);
+        if (e.Key == "ArrowRight") _game.ChangeDirection(Direction.Right);
+    }
+
+    private async Task ReStartGame()
+    {
+        _game = new SnakeGame(20, 20); //Uusi peli
+        StateHasChanged();             //Päivitä UI
+
+		var module = await JS.InvokeAsync<IJSObjectReference>("import", "./snakeCanvas.js");
+		await module.InvokeVoidAsync("focusCanvas", _canvas);
+    }
+
+    public void Dispose()
+    {
+        _timer.Dispose();
+    }
+}
