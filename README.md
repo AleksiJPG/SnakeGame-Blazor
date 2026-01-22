@@ -43,5 +43,7 @@ The goal of this project was to practice client-side state management, JavaScrip
 
 ---
 
-## 📸 Screenshots
+## 📸 GIF
+
+![Image](https://github.com/user-attachments/assets/97168710-074a-40e9-8a80-b500b8ac9f1b)
 
