@@ -1,3 +1,5 @@
+https://aleksi-snakegame.netlify.app/
+
 # 🐍 Snake Game – Blazor WebAssembly
 
 A classic Snake game built as a personal portfolio project using **Blazor WebAssembly** and **HTML Canvas**.
