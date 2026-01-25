@@ -11,6 +11,7 @@ The goal of this project was to practice client-side state management, JavaScrip
 ## 🎮 Features
 
 - Arrow key controls
+- Touch controls (mobile)
 - Real-time score tracking
 - Game Over overlay
 - Restart without page refresh
@@ -18,7 +19,7 @@ The goal of this project was to practice client-side state management, JavaScrip
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
 - **.NET / C#**
 - **Blazor WebAssembly**
@@ -35,9 +36,17 @@ The goal of this project was to practice client-side state management, JavaScrip
 - Implementing a simple game loop and collision detection
 - Structuring a small but complete project for a portfolio
 
+  ---
+
+📱 Mobile Support
+Canvas automatically scales to screen width
+Touch controls shrink and become semi‑transparent on mobile
+Controls stay out of the way of the game area
+Fully playable on phones and tablets
+
 ---
 
-## 📸 GIF
+ 📸 GIF
 
 ![Image](https://github.com/user-attachments/assets/97168710-074a-40e9-8a80-b500b8ac9f1b)
 
