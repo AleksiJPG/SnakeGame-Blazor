@@ -37,12 +37,12 @@ The goal of this project was to practice client-side state management, JavaScrip
 - Structuring a small but complete project for a portfolio
 
   ---
+## 📱 Mobile Support
 
-📱 Mobile Support
-Canvas automatically scales to screen width
-Touch controls shrink and become semi‑transparent on mobile
-Controls stay out of the way of the game area
-Fully playable on phones and tablets
+- Canvas automatically scales to screen width  
+- Touch controls shrink and become semi-transparent on mobile  
+- Controls stay out of the way of the game area  
+- Fully playable on phones and tablets
 
 ---
 
