@@ -13,6 +13,7 @@ The goal of this project was to practice client-side state management, JavaScrip
 - Arrow key controls
 - Touch controls (mobile)
 - Real-time score tracking
+- Persistent High Score stored in localStorage
 - Game Over overlay
 - Restart without page refresh
 - Canvas-based rendering using JavaScript interop
@@ -35,6 +36,7 @@ The goal of this project was to practice client-side state management, JavaScrip
 - Handling keyboard input and focus in Blazor
 - Implementing a simple game loop and collision detection
 - Structuring a small but complete project for a portfolio
+- Integrating browser APIs (localStorage) through ES module interop to persist high scores across sessions
 
   ---
 ## 📱 Mobile Support
