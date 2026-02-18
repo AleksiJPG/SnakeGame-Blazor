@@ -1,4 +1,4 @@
-https://aleksi-snakegame.netlify.app/
+You can play the game directly here: https://aleksi-snakegame.netlify.app/
 
 # 🐍 Snake Game – Blazor WebAssembly
 
